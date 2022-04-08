@@ -36,9 +36,17 @@ public class Project08 {
   }
 
   public static boolean validateEmailAddress(String password){
+    boolean hasDot = false;
+    for (int i = password.lastIndexOf("@") + 1; i < password.lastIndexOf(".") ; i++) {
+      if(password.charAt(i) == '.') {
+        hasDot = true;
+        break;
+      }
+    }
 
     return ((password.indexOf("@") == password.lastIndexOf("@")  && password.contains("@")))
-    && (password.indexOf(".") == password.lastIndexOf(".") && password.contains("."))
+            &&(password.lastIndexOf("@") > password.lastIndexOf("."))
+            && !hasDot
     && (password.length() - password.indexOf(".") + 1 >= 2) && (password.indexOf(".") - password.indexOf("@") > 2)
             &&(password.indexOf("@") > 1);
 
