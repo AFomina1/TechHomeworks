@@ -36,18 +36,17 @@ public class Project08 {
   }
 
   public static boolean validateEmailAddress(String password){
-    boolean hasDot = false;
+    boolean notHasDot = true;
     for (int i = password.lastIndexOf("@") + 1; i < password.lastIndexOf(".") ; i++) {
       if(password.charAt(i) == '.') {
-        hasDot = true;
+        notHasDot = false;
         break;
       }
     }
 
     return ((password.indexOf("@") == password.lastIndexOf("@")  && password.contains("@")))
-            &&(password.lastIndexOf("@") > password.lastIndexOf("."))
-            && !hasDot
-    && (password.length() - password.indexOf(".") + 1 >= 2) && (password.indexOf(".") - password.indexOf("@") > 2)
+            &&(password.lastIndexOf("@") < password.lastIndexOf(".")) && notHasDot
+    && (password.length() - password.lastIndexOf(".") + 1 >= 2) && (password.lastIndexOf(".") - password.indexOf("@") > 2)
             &&(password.indexOf("@") > 1);
 
     }
@@ -56,7 +55,7 @@ public class Project08 {
   public static void main(String[] args) {
     System.out.println(countMultipleWords(strings));
     System.out.println(removeNegatives(ints));
-    System.out.println(validateEmailAddress("al@eg.com"));
+    System.out.println(validateEmailAddress("a.l.o.na@egm"));
   }
 }
 
